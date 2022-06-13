@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        steps('Build') {
             sh 'docker-compose build'
         }
     }
-    stage('Publish') {
+    steps('Publish') {
         sh 'git push --tags'
     }
 }
