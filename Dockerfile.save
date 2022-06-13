@@ -1,7 +1,0 @@
-FROM node:latest AS compile-image
-WORKDIR /opt/vue-2048
-
-WORKDIR /opt/vue-2048
-COPY package.json yarn.lcok angular.json ./
-RUN yarn
-RUN yarn install
