@@ -9,7 +9,10 @@ pipeline {
 
         stage('Publish') {
             steps {
-                sh 'git push --tags'
+                sshagent(['github-ssh']) {
+                    //sh 'git tag BUILD-1.0.$(BUILD_NUMBER)'
+                    sh 'git push --tags'
+                }
             }
         }
 
