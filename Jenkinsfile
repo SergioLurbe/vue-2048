@@ -4,8 +4,10 @@ pipeline {
         steps('Build') {
             sh 'docker-compose build'
         }
+
+        steps('Publish') {
+            sh 'git push --tags'
+        }
     }
-    steps('Publish') {
-        sh 'git push --tags'
-    }
+    
 }
