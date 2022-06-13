@@ -1,0 +1,5 @@
+FROM nginx:latest
+WORKDIR /opt/vue-2048
+RUN apt install -y yarn
+RUN yarn
+CMD yarn d

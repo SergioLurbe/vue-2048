@@ -1,0 +1,7 @@
+version: "3.0"
+services:
+  vue-2048:
+    image: vue-2048:latest
+    build: .
+    ports:
+      - "3000:80"
