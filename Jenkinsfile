@@ -5,6 +5,7 @@ pipeline {
         timestamps()
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+        @Library('pipeline-library')_
     }
 
     stages {
@@ -12,7 +13,7 @@ pipeline {
 
         stage('Demo') {
             steps {
-                @Library('pipeline-library')_
+
                 echo 'Hello there'
                 sayHello 'Dave'
             }
