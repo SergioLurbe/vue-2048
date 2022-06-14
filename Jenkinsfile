@@ -7,6 +7,13 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
     }
     stages {
+        @Library('pipeline-library-demo')_
+
+        stage('Demo') {
+         echo 'Hello World'
+         sayHello 'Dave'
+        }
+
         stage('Build') {
             steps {
                 sh 'docker-compose build'
