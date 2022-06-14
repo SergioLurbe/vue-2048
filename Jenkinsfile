@@ -6,11 +6,13 @@ pipeline {
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
     }
+
     stages {
-        @Library('pipeline-library')_
+
 
         stage('Demo') {
             steps {
+                @Library('pipeline-library')_
                 echo 'Hello there'
                 sayHello 'Dave'
             }
