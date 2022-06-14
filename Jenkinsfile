@@ -7,7 +7,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
     }
     stages {
-        @Library('pipeline-library-demo')_
+        @Library('pipeline-library')_
 
         stage('Demo') {
          echo 'Hello World'
