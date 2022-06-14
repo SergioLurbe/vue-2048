@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo $BUILD_TIMESTAMP'
+                sh 'echo "empieza en "$BUILD_TIMESTAMP'
                 sh 'docker-compose build'
             }
         }
