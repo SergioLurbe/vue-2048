@@ -10,8 +10,11 @@ pipeline {
         @Library('pipeline-library')_
 
         stage('Demo') {
-         echo 'Hello there'
-         sayHello 'Dave'
+            steps {
+                echo 'Hello there'
+                sayHello 'Dave'
+            }
+
         }
 
         stage('Build') {
