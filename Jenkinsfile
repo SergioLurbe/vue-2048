@@ -20,6 +20,17 @@ pipeline {
             }
         }
 
+        stage('Scan') {
+            steps {
+                parallel(
+                   a:{ sh "trivy image -f json -o results-image.json server-vue:latest"
+                   recordIssues(tools: [trivy(pattern: 'results-image.json')])},
+                   b:{sh "trivy fs --security-checks vuln,secret,config -f json -o results-fs.json ./"
+                   recordIssues(tools: [trivy(pattern: 'results-fs.json')])}
+               )
+            }
+        }
+
 
 
         stage('Publish') {
