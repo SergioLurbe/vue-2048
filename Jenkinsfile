@@ -18,6 +18,13 @@ pipeline {
             }
         }
 
+        stage('Trivy') {
+                steps {
+                    sh 'trivy image -f json -o results.json vue-2048'
+                    recordIssues(tools: [trivy()])
+                }
+        }
+
         stage('Publish') {
             steps {
                 sshagent(['github-ssh']) {
