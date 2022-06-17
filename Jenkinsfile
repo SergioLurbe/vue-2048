@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'docker-compose build'
-                sh 'trivy image -f json -o results.json vue-2048:latest'
+                sh 'trivy image -f json -o result.json vue-2048:latest'
                 recordIssues(tools: [trivy(pattern: 'result.json')])
             }
         }
