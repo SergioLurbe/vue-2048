@@ -39,10 +39,12 @@ pipeline {
                     //sh 'git tag BUILD-1.0.$(BUILD_NUMBER)'
                     sh 'git push --tags'
                 }
+                /*
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'token', usernameVariable: 'username')]) {
                     sh "echo '${token}' | docker login -u '${username}' --password-stdin"
                     sh 'docker push sergiolurbe/2048:latest'
                 }
+                */
             }
         }
 
