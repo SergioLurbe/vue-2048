@@ -31,6 +31,7 @@ pipeline {
             }
         }
         */
+        /*
         stage('Parallel Stage') {
                     when {
                         branch 'main'
@@ -60,7 +61,7 @@ pipeline {
                     }
                 }
 
-
+        */
         stage('Publish') {
             steps {
                 sshagent(['github-ssh']) {
