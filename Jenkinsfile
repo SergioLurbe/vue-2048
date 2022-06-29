@@ -81,7 +81,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockergit', passwordVariable: 'gitPassword', usernameVariable: 'gitUsername')]) {
                     sh "echo '${gitPassword}' | docker login ghcr.io -u '${gitUsername}' --password-stdin"
-                    sh 'docker push ghcr.io/sergiolurbe/2048:2.5'
+                    sh 'docker push ghcr.io/sergiolurbe/2048:latest'
                 }
             }
         }
