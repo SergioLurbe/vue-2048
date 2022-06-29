@@ -19,7 +19,7 @@ pipeline {
                 recordIssues(tools: [trivy(pattern: 'result.json')])
             }
         }
-        /*
+
         stage('Scan') {
             steps {
                 parallel(
@@ -30,7 +30,7 @@ pipeline {
                )
             }
         }
-        */
+
         /*
         stage('Parallel Stage') {
                     when {
