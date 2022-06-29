@@ -19,7 +19,7 @@ pipeline {
                 recordIssues(tools: [trivy(pattern: 'result.json')])
             }
         }
-
+        /*
         stage('Scan') {
             steps {
                 parallel(
@@ -30,7 +30,35 @@ pipeline {
                )
             }
         }
-
+        */
+        stage('Parallel Stage') {
+                    when {
+                        branch 'main'
+                    }
+                    failFast true
+                    parallel {
+                        stage('Trivy'){
+                            steps{
+                                sh 'trivy fs -f json -o results.json .'
+                              }
+                            post {
+                              success {
+                                  recordIssues(tools: [trivy(pattern: 'result.json')])
+                              }
+                            }
+                        }
+                        stage('Trivy Image') {
+                            steps {
+                                sh 'trivy image -f json -o results.json 2048'
+                            }
+                            post {
+                              success {
+                                  recordIssues(tools: [trivy(pattern: 'result.json')])
+                              }
+                            }
+                        }
+                    }
+                }
 
 
         stage('Publish') {
