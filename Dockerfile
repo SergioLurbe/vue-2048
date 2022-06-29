@@ -8,3 +8,4 @@ RUN yarn build
 FROM nginx:latest
 COPY --from=build-deps /opt/vue-2048/dist /usr/share/nginx/html
 #COPY --from=build-deps /opt/vue-2048/index /usr/share/nginx/html
+#COPY --sdfsdfsdf
