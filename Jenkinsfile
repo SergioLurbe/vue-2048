@@ -77,6 +77,15 @@ pipeline {
             }
         }
 
+        stage('GitContainer') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockergit', passwordVariable: 'gitPassword', usernameVariable: 'gitUsername')]) {
+                    sh "echo '${gitPassword}' | docker login ghcr.io -u '${gitUsername}' --password-stdin"
+                    sh 'docker push sergiolurbe/2048:latest'
+                }
+            }
+        }
+
 
     }
     
