@@ -90,8 +90,12 @@ pipeline {
         }
 
        stage('Ansible'){
+
             steps {
-              ansiblePlaybook credentialsId: 'aws', disableHostKeyChecking: true, playbook: 'ansible2/ec2-launch-docker.yaml'
+                withAWS(credentials: 'afcdcf40-dbfb-450b-b486-84b89ca82433', region: 'eu-west-1') {
+                   ansiblePlaybook credentialsId: 'aws', disableHostKeyChecking: true, playbook: 'ansible2/ec2-launch-docker.yaml'
+                }
+
             }
         }
 
