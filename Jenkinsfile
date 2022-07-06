@@ -94,7 +94,7 @@ pipeline {
             steps {
 
                     withAWS(credentials: 'afcdcf40-dbfb-450b-b486-84b89ca82433', region: 'eu-west-1') {
-                       ansiblePlaybook credentialsId: 'key', disableHostKeyChecking: true, playbook: 'ansible2/ec2-launch-docker.yaml', additionalParameters: '-vvvv'
+                       ansiblePlaybook credentialsId: 'key', disableHostKeyChecking: true, playbook: 'ansible2/ec2-launch-docker.yaml', extras: '-vvvv'
 
                     }
 
