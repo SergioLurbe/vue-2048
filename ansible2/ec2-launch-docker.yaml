@@ -80,7 +80,7 @@
 
     - name: Copy vue-2048
       copy:
-        src: /docker-compose.yml
+        src: docker-compose.yml
         dest: Docker/
 
     - name: Pull DockersHub
