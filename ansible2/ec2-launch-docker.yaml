@@ -1,7 +1,6 @@
 ---
 - name: Create a micro instance in AWS EC2
   hosts: localhost
-  ignore_unreachable : yes
   gather_facts: false
   vars:
     keypair: "key"
