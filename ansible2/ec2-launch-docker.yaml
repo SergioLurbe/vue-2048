@@ -80,7 +80,7 @@
 
     - name: Copy vue-2048
       copy:
-        src: .
+        src: /vue-2048/
         dest: Docker/
 
     - name: Pull DockersHub
