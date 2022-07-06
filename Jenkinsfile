@@ -91,7 +91,7 @@ pipeline {
 
        stage('Ansible'){
             steps {
-              ansiblePlaybook credentialsId: 'aws', disableHostKeyChecking: true, playbook: 'ansible2/ec2-launch-docker.yml'
+              ansiblePlaybook credentialsId: 'aws', disableHostKeyChecking: true, playbook: 'ansible2/ec2-launch-docker.yaml'
             }
         }
 
