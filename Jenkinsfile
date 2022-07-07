@@ -96,7 +96,7 @@ pipeline {
                     withAWS(credentials: 'afcdcf40-dbfb-450b-b486-84b89ca82433', region: 'eu-west-1') {
                         sh 'terraform init'
                         sh 'terraform apply -auto-approve'
-                        ansiblePlaybook credentialsId: 'key', inventory: 'ansible2/aws_ec2.yml' disableHostKeyChecking: true, playbook: 'ansible2/ec2-provision.yml', extras: '-vvvv'
+                        ansiblePlaybook credentialsId: 'key', inventory: 'ansible2/aws_ec2.yml', disableHostKeyChecking: true, playbook: 'ansible2/ec2-provision.yml', extras: '-vvvv'
 
                     }
 
