@@ -22,5 +22,5 @@
 
     - name: Git vue-2048
       copy:
-        src: dist/
+        src: /home/sinensia/vue-2048/dist/
         dest: /var/www/html/
