@@ -4,7 +4,7 @@
     ansible_user: ec2-user
 
 - name: Configure instance(s)
-  hosts: launched
+  hosts: all
   become: True
   vars:
     ansible_user: ec2-user
