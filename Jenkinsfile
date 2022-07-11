@@ -90,16 +90,28 @@ pipeline {
         }
 
        stage('Ansible'){
+            when {
+                expression {
+                    False
+                }
 
+            }
+                steps {
+                        withAWS(credentials: 'afcdcf40-dbfb-450b-b486-84b89ca82433', region: 'eu-west-1') {
+                            sh 'terraform -chdir=terraform init'
+                            sh 'terraform -chdir=terraform apply --auto-approve'
+                            ansiblePlaybook credentialsId: 'key', inventory: 'ansible2/aws_ec2.yml', disableHostKeyChecking: true, playbook: 'ansible2/ec2-provision.yml', extras: '-vv'
+
+                        }
+
+                }
+       }
+
+        stage ('kube') {
             steps {
-
-                    withAWS(credentials: 'afcdcf40-dbfb-450b-b486-84b89ca82433', region: 'eu-west-1') {
-                        sh 'terraform -chdir=terraform init'
-                        sh 'terraform -chdir=terraform apply --auto-approve'
-                        ansiblePlaybook credentialsId: 'key', inventory: 'ansible2/aws_ec2.yml', disableHostKeyChecking: true, playbook: 'ansible2/ec2-provision.yml', extras: '-vv'
-
-                    }
-
+                withKubeConfig(caCertificate: '', clusterName: 'minikube', contextName: '', credentialsId: 'kubekey', namespace: 'default', serverUrl: 'https://192.168.49.2:8443') {
+                    sh 'kubectl apply -f kubernetes/vue2048.yml'
+                }
             }
         }
 
